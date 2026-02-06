@@ -1,7 +1,7 @@
 ## 📋 Assessment Submission
 **Candidate:** [Laiba Jahangir]  
 **Cloud Provider:** AWS  
-**Submission Date:** [07 februry 2026]
+**Submission Date:** [06 februry 2026]
 
 ## ✅ Assessment Requirements Fulfilled
 
