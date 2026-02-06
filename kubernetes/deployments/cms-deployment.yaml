@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cms
+  namespace: openedx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: cms
+  template:
+    metadata:
+      labels:
+        component: cms
+    spec:
+      containers:
+      - name: cms
+        image: overhangio/openedx:latest
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          initialDelaySeconds: 150
