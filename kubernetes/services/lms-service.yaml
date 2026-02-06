@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lms
+  namespace: openedx
+spec:
+  selector:
+    component: lms
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
