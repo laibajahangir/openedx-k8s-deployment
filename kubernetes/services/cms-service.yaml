@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: cms
+  namespace: openedx
+spec:
+  selector:
+    component: cms
+  ports:
+  - protocol: TCP
+    port: 8000
+    targetPort: 8000
