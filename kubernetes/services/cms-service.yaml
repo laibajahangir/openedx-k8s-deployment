@@ -3,10 +3,27 @@ kind: Service
 metadata:
   name: cms
   namespace: openedx
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: external
+    service.beta.kubernetes.io/aws-load-balancer-nlb-target-type: ip
+    service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  labels:
+    app: openedx
+    component: cms
 spec:
   selector:
+    app: openedx
     component: cms
   ports:
-  - protocol: TCP
-    port: 8000
-    targetPort: 8000
+  - port: 80
+    targetPort: 8001
+    protocol: TCP
+    name: http
+  - port: 443
+    targetPort: 8001
+    protocol: TCP
+    name: https
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  loadBalancerSourceRanges:
+  - 0.0.0.0/0
