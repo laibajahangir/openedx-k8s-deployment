@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lms
+  namespace: openedx
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        component: lms
+    spec:
+      containers:
+      - name: lms
+        image: overhangio/openedx:latest
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8000
+          initialDelaySeconds: 150
